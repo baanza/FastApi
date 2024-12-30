@@ -3,7 +3,7 @@ from fastapi import Depends, FastAPI, Header, HTTPException, Cookie
 
 app = FastAPI()
 
-async def cookie_fetcher(cookie: Annotated[str, Cookie('just now')]):
+async def cookie_fetcher(cookie: Annotated[str, Cookie(default='just now')]):
     if cookie == "trial":
         raise HTTPException(status_code=418, detail="stop trying")
     return cookie
